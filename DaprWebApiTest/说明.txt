@@ -1,0 +1,8 @@
+﻿
+dapr运行命令：
+dapr run --dapr-http-port 3500 --app-port 5000  --app-id DaprWebApiTestApp DaprWebApiTest.exe
+
+dapr dashboard  监视面板
+
+直接访问地址
+http://localhost:3500/v1.0/invoke/DaprWebApiTestApp/method/api/WeatherForecast/
