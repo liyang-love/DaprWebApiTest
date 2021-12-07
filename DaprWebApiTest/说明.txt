@@ -6,3 +6,21 @@ dapr dashboard  监视面板
 
 直接访问地址
 http://localhost:3500/v1.0/invoke/DaprWebApiTestApp/method/api/WeatherForecast/
+
+
+dockerfile 放置应用发布的linux-x64同级
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
+WORKDIR /app
+COPY linux-x64/ /app
+EXPOSE 80
+ENTRYPOINT ["dotnet", "DaprWebApiTest.dll"]
+
+
+构建镜像
+docker build -t daprtest:v1 .
+
+
+运行镜像
+docker run -d -p 20000:80 daprtest:v1 --name myap
